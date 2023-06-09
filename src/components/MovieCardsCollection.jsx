@@ -21,12 +21,18 @@ export default function MovieCardsCollection() {
         {
           matchedResults.Search.map((item, idx) => {
             return (
-              <IndividualMovieCard
+              <a
+                className="hover:cursor-pointer"
                 key={idx}
-                posterLink={item.Poster}
-                title={item.Title}
-                year={item.Year}
-              />
+                href={`https://imdb.com/title/${item.imdbID}`}
+                target="_blank"
+              >
+                <IndividualMovieCard
+                  posterLink={item.Poster}
+                  title={item.Title}
+                  year={item.Year}
+                />
+              </a>
             )
           })
         }
