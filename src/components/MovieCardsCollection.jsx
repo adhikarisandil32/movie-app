@@ -26,7 +26,7 @@ export default function MovieCardsCollection() {
                 key={idx}
                 href={`https://imdb.com/title/${item.imdbID}`}
                 target="_blank"
-              >
+              > 
                 <IndividualMovieCard
                   posterLink={item.Poster}
                   title={item.Title}
