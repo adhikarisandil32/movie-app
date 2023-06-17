@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useMovieDetailsContext } from "../store/store";
 
@@ -6,6 +7,7 @@ export default function SearchBox() {
   
   const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
 
+  const naviagte = useNavigate()
   const {dispatch} = useMovieDetailsContext()
   const [searchString, setSearchString] = useState("");
 
@@ -72,7 +74,7 @@ export default function SearchBox() {
   };
 
   return (
-    <div className="w-[min(100%,375px)]">
+    <div className="w-full">
       <form
         onSubmit={handleSubmit}
         className="full flex"

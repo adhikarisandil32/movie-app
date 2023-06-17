@@ -11,6 +11,7 @@ export default function Pagination({totalMatches, matchesPerPage, currentPage, s
   const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
 
   useEffect(() => {
+    console.log("from pagination")
     let searchParamName = new URL(location.href).searchParams.get("s")    
     searchParamName = Boolean(searchParamName) ? searchParamName : ''
 

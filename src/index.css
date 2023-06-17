@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=Roboto:wght@300&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,5 +13,11 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 16px;
+    }
+}
+
+@layer utilities{
+    .font-family-exo{
+        font-family: 'Exo 2', sans-serif;
     }
 }

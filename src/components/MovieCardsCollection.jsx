@@ -15,8 +15,9 @@ export default function MovieCardsCollection() {
 
   const showPagination = matchedResults.Search.length === 0 ? false : true;
 
-  return (
+  return ( 
     <div>
+      <span>This is MovieCardsCollection</span>
       <div className='flex-container'>
         {
           matchedResults.Search.map((item, idx) => {
