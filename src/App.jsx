@@ -12,9 +12,9 @@ export default function App() {
             <HomeComp />
             <Routes>
               <Route path="/" element={<></>} />
+              <Route path="/*" element={<PageNotFound />} />
               <Route path="/home" element={<Navigate to="/" />}/>
               <Route path="/search" element={<MovieCardsCollection />}/>
-              <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </BrowserRouter>
         </div>

@@ -11,7 +11,7 @@ export default function HomeComp() {
               className="h-full block"
             >
               <img
-                src="public/static/logo.png"
+                src="static/logo.png"
                 alt="logo"
                 className="p-2 h-full w-full object-contain object-center cursor-pointer"
               />

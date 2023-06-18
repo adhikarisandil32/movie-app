@@ -1,13 +1,24 @@
-import React, {useState, useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-import axios from 'axios'
-import { useMovieDetailsContext } from "../store/store";
+import React, {useState} from "react";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 export default function SearchBox() {
-  
-  const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
+  const searchParam = new URLSearchParams(location.search).get("s")
+  const [searchString, setSearchString] = useState(searchParam);
+  const navigate = useNavigate()
 
-  const naviagte = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate({
+      pathname: '/search',
+      search: createSearchParams({
+        s: searchString,
+        page: 1
+      }).toString()
+    })
+  }
+
+  /*
   const {dispatch} = useMovieDetailsContext()
   const [searchString, setSearchString] = useState("");
 
@@ -72,7 +83,7 @@ export default function SearchBox() {
         alert(err.message)
       });
   };
-
+  */
   return (
     <div className="w-full">
       <form
@@ -89,7 +100,7 @@ export default function SearchBox() {
           placeholder="Enter Movie Name"
         />
         <button
-          className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-700 rounded-md font-semibold"
+          className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-600 rounded-md font-semibold"
         >Search</button>
       </form>
     </div>

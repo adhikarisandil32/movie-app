@@ -15,7 +15,7 @@ export default function PageNotFound() {
         <div className="flex justify-center">
           <img
             className="w-[500px] object-contain"
-            src="/public/static/404.png"
+            src="/static/404.png"
             alt="" />
         </div>
       </div>
