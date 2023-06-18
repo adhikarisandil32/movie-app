@@ -2,10 +2,10 @@ import React,{useEffect} from 'react'
 import { useMovieDetailsContext } from '../store/store'
 import axios from 'axios'
 
-export default function Pagination({totalMatches, matchesPerPage, currentPage, setCurrentPage}) {
+export default function Pagination({totalPages}) {
 
   const handleNext = () => {
-    if(currentPage === numberOfPages){
+    if(currentPage === totalPages){
       return
     }
   }
@@ -37,7 +37,7 @@ export default function Pagination({totalMatches, matchesPerPage, currentPage, s
         className="px-4 py-2 bg-blue-950 rounded-lg text-gray-200"
         onClick={handlePrevious}
       >Previous</button>
-        {/* <span className="px-4 text-gray-400">{currentPage} of {numberOfPages}</span> */}
+        <span className="px-4 text-gray-400">1 of {totalPages}</span>
       <button
         className="px-4 py-2 bg-blue-950 rounded-lg text-gray-200"
         onClick={handleNext}

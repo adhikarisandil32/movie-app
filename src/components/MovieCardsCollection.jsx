@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useLocation } from 'react-router-dom'
 import IndividualMovieCard from './IndividualMovieCard'
 import { useMovieDetailsContext } from '../store/store'
 import { axiosRequest } from "../reusables/axiosRequest";
@@ -11,7 +11,8 @@ export default function MovieCardsCollection() {
   const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
   const showPagination = matchedResults.Search.length === 0 ? false : true;
 
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
+  console.log(searchParams)
 
   useEffect(() => {
     axiosRequest({
@@ -56,12 +57,16 @@ export default function MovieCardsCollection() {
       </div>
       {
         showPagination && <Pagination
-          totalMatches={matchedResults.totalResults}
-          matchesPerPage={10}
+          totalPages={matchedResults.totalPages}
           /* currentPage={currentPage}
           setCurrentPage={setCurrentPage} */
         />
       }
+      <div>
+        <button style={{color: "white"}} onClick={() => {
+          searchParams.set("page", 4).toString()
+        }}>Click</button>
+      </div>
     </div>
   )
 }

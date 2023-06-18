@@ -1,13 +1,15 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import SearchBox from './SearchBox'
 
-export default function HomeComp() {
+export default function Navbar() {
+
   return (
     <>
       <div className="h-20 flex justify-between items-center">
           <div className="h-16">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="h-full block"
             >
               <img
@@ -15,7 +17,7 @@ export default function HomeComp() {
                 alt="logo"
                 className="p-2 h-full w-full object-contain object-center cursor-pointer"
               />
-            </a>
+            </Link>
           </div>
           <div className="w-[min(100%,400px)]">
             <SearchBox />

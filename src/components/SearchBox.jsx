@@ -2,8 +2,11 @@ import React, {useState} from "react";
 import { useNavigate, createSearchParams } from "react-router-dom";
 
 export default function SearchBox() {
-  const searchParam = new URLSearchParams(location.search).get("s")
-  const [searchString, setSearchString] = useState(searchParam);
+
+  let searchParam = new URLSearchParams(location.search).get("s")
+  searchParam = searchParam ? searchParam : ''
+
+  const [searchString, setSearchString] = useState(searchParam)
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
