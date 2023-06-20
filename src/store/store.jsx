@@ -22,7 +22,7 @@ function reducer(state, action) {
 
 export default function ContextProvider(props){
 
-    const [matchedResults, dispatch] = useReducer(reducer, {Search: [], currentPage: 1})
+    const [matchedResults, dispatch] = useReducer(reducer, {Search: []})
 
     return(
         <MovieDetailsContext.Provider

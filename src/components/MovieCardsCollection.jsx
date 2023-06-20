@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import IndividualMovieCard from './IndividualMovieCard'
 import { useMovieDetailsContext } from '../store/store'
 import { axiosRequest } from "../reusables/axiosRequest";
 import Pagination from './Pagination'
+import { CircularProgress } from '@mui/material';
 
 export default function MovieCardsCollection() {
-
-  const navigate = useNavigate()
+  
+  const [isLoading, setIsLoading] = useState(false)
   const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
   const {matchedResults, dispatch} = useMovieDetailsContext()
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const showPagination = matchedResults.Search.length === 0 ? false : true;
 
@@ -25,7 +27,9 @@ export default function MovieCardsCollection() {
   useEffect(() => {
     axiosRequest({
       url: `${baseURL}${searchParams.toString()}`,
-      dispatch: dispatch
+      dispatch: dispatch,
+      navigate: navigate,
+      setIsLoading: setIsLoading
     })
   }, [searchParams])
 
@@ -41,8 +45,13 @@ export default function MovieCardsCollection() {
   const showPagination = matchedResults.Search.length === 0 ? false : true;
   */
 
-  return ( 
+  return (
     <div>
+      <div className="flex justify-center">
+        {
+          isLoading ? <CircularProgress size={50} thickness={6} /> : ''
+        }
+      </div>
       <div className="flex-container">
         {
           matchedResults.Search.map((item, idx) => {
@@ -63,13 +72,15 @@ export default function MovieCardsCollection() {
           })
         }
       </div>
-      {
-        showPagination && <Pagination
-          totalPages={matchedResults.totalPages}
-          currentPage={matchedResults.currentPage}
-          /* setCurrentPage={setCurrentPage} */
-        />
-      }
+      <div>
+        {
+          showPagination && <Pagination
+            totalPages={matchedResults.totalPages}
+            currentPage={matchedResults.currentPage}
+            /* setCurrentPage={setCurrentPage} */
+          />
+        }
+      </div>
     </div>
   )
 }
