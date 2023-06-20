@@ -1,11 +1,29 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios'
-import { useMovieDetailsContext } from "../store/store";
+import React, {useState} from "react";
+import { useNavigate, createSearchParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 export default function SearchBox() {
-  
-  const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
 
+  let searchParam = new URLSearchParams(location.search).get("s")
+  searchParam = searchParam ? searchParam : ''
+
+  const [searchString, setSearchString] = useState(searchParam)
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate({
+      pathname: '/search',
+      search: createSearchParams({
+        s: searchString,
+        page: 1
+      }).toString()
+    })
+  }
+
+  /*OLD_CODE
   const {dispatch} = useMovieDetailsContext()
   const [searchString, setSearchString] = useState("");
 
@@ -70,9 +88,9 @@ export default function SearchBox() {
         alert(err.message)
       });
   };
-
+  */
   return (
-    <div className="w-[min(100%,375px)]">
+    <div className="w-full">
       <form
         onSubmit={handleSubmit}
         className="full flex"
@@ -87,8 +105,8 @@ export default function SearchBox() {
           placeholder="Enter Movie Name"
         />
         <button
-          className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-700 rounded-md font-semibold"
-        >Search</button>
+          className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-600 rounded-md font-semibold"
+        ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
       </form>
     </div>
   );
