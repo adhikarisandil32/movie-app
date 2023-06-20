@@ -25,8 +25,7 @@ export default function MovieCardsCollection() {
   useEffect(() => {
     axiosRequest({
       url: `${baseURL}${searchParams.toString()}`,
-      dispatch: dispatch,
-      navigate: navigate
+      dispatch: dispatch
     })
   }, [searchParams])
 
@@ -68,7 +67,6 @@ export default function MovieCardsCollection() {
         showPagination && <Pagination
           totalPages={matchedResults.totalPages}
           currentPage={matchedResults.currentPage}
-          navigate={navigate}
           /* setCurrentPage={setCurrentPage} */
         />
       }

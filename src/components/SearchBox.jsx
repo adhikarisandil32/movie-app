@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate, createSearchParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 export default function SearchBox() {
 
@@ -104,7 +106,7 @@ export default function SearchBox() {
         />
         <button
           className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-600 rounded-md font-semibold"
-        >Search</button>
+        ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
       </form>
     </div>
   );

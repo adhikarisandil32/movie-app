@@ -30,8 +30,7 @@ export async function axiosRequest({url, dispatch, navigate}){
     })
     .catch((err) => {
       navigate({
-        pathname: "/error",
-        state: err.message
+        pathname: "/error"
       })
     })
 }
