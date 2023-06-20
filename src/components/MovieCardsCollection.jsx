@@ -46,31 +46,33 @@ export default function MovieCardsCollection() {
   */
 
   return (
-    <div className="relative">
-      <div className="absolute block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        {
-          isLoading ? <CircularProgress size={100} /> : ''
-        }
-      </div>
-      <div className={`flex-container ${isLoading ? 'opacity-5' : ''}`}>
-        {
-          matchedResults.Search.map((item, idx) => {
-            return (
-              <a
-                className="hover:cursor-pointer"
-                key={idx}
-                href={`https://imdb.com/title/${item.imdbID}`}
-                target="_blank"
-              > 
-                <IndividualMovieCard
-                  posterLink={item.Poster}
-                  title={item.Title}
-                  year={item.Year}
-                />
-              </a>
-            )
-          })
-        }        
+    <>
+      <div className="relative">
+        <div className="absolute block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          {
+            isLoading ? <CircularProgress size={100} /> : ''
+          }
+        </div>
+        <div className={`flex-container ${isLoading ? 'opacity-5' : ''}`}>
+          {
+            matchedResults.Search.map((item, idx) => {
+              return (
+                <a
+                  className="hover:cursor-pointer"
+                  key={idx}
+                  href={`https://imdb.com/title/${item.imdbID}`}
+                  target="_blank"
+                > 
+                  <IndividualMovieCard
+                    posterLink={item.Poster}
+                    title={item.Title}
+                    year={item.Year}
+                  />
+                </a>
+              )
+            })
+          }        
+        </div>
       </div>
       <div>
         {
@@ -81,6 +83,6 @@ export default function MovieCardsCollection() {
           />
         }
       </div>
-    </div>
+    </>
   )
 }
