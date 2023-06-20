@@ -46,13 +46,13 @@ export default function MovieCardsCollection() {
   */
 
   return (
-    <div>
-      <div className="flex justify-center">
+    <div className="relative">
+      <div className="absolute block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         {
-          isLoading ? <CircularProgress size={50} thickness={6} /> : ''
+          isLoading ? <CircularProgress size={100} /> : ''
         }
       </div>
-      <div className="flex-container">
+      <div className={`flex-container ${isLoading ? 'opacity-5' : ''}`}>
         {
           matchedResults.Search.map((item, idx) => {
             return (
@@ -70,7 +70,7 @@ export default function MovieCardsCollection() {
               </a>
             )
           })
-        }
+        }        
       </div>
       <div>
         {
