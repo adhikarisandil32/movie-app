@@ -17,7 +17,7 @@ export default function SearchBox() {
     navigate({
       pathname: '/search',
       search: createSearchParams({
-        s: searchString,
+        s: searchString.trim(),
         page: 1
       }).toString()
     })
