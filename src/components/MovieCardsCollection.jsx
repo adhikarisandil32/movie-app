@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { useSearchParams, useLocation } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import IndividualMovieCard from './IndividualMovieCard'
 import { useMovieDetailsContext } from '../store/store'
 import { axiosRequest } from "../reusables/axiosRequest";
@@ -7,20 +7,30 @@ import Pagination from './Pagination'
 
 export default function MovieCardsCollection() {
 
-  const {matchedResults, dispatch} = useMovieDetailsContext()
+  const navigate = useNavigate()
   const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
+  const {matchedResults, dispatch} = useMovieDetailsContext()
+  const [searchParams] = useSearchParams()
   const showPagination = matchedResults.Search.length === 0 ? false : true;
 
-  const [searchParams] = useSearchParams()
-  console.log(searchParams)
+  // dummy function to check if it only changes the search parameter
+  /* const changeSingleQueryParameter = (searchParams) => {
+    searchParams.set("page", 2)
+    navigate({
+      pathname: "/search",
+      search: searchParams.toString()
+    })
+  } */
 
   useEffect(() => {
     axiosRequest({
       url: `${baseURL}${searchParams.toString()}`,
-      dispatch: dispatch
+      dispatch: dispatch,
+      navigate: navigate
     })
   }, [searchParams])
-  /*
+
+  /* OLD_CODE
   const {matchedResults} = useMovieDetailsContext()
   const [currentPage, setCurrentPage] = useState()
 
@@ -34,7 +44,6 @@ export default function MovieCardsCollection() {
 
   return ( 
     <div>
-      <span className="text-white">This is MovieCardsCollection</span>
       <div className="flex-container">
         {
           matchedResults.Search.map((item, idx) => {
@@ -58,15 +67,11 @@ export default function MovieCardsCollection() {
       {
         showPagination && <Pagination
           totalPages={matchedResults.totalPages}
-          /* currentPage={currentPage}
-          setCurrentPage={setCurrentPage} */
+          currentPage={matchedResults.currentPage}
+          navigate={navigate}
+          /* setCurrentPage={setCurrentPage} */
         />
       }
-      <div>
-        <button style={{color: "white"}} onClick={() => {
-          searchParams.set("page", 4).toString()
-        }}>Click</button>
-      </div>
     </div>
   )
 }

@@ -21,7 +21,7 @@ export default function SearchBox() {
     })
   }
 
-  /*
+  /*OLD_CODE
   const {dispatch} = useMovieDetailsContext()
   const [searchString, setSearchString] = useState("");
 

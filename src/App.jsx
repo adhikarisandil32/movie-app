@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import MovieCardsCollection from './components/MovieCardsCollection'
 import PageNotFound from './components/PageNotFound'
+import InternalError from './components/InternalError'
 import Navbar from './components/Navbar'
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<></>} />
               <Route path="/*" element={<PageNotFound />} />
+              <Route path="/error" element={<InternalError />} />
               <Route path="/home" element={<Navigate to="/" />}/>
               <Route path="/search" element={<MovieCardsCollection />}/>
             </Routes>
