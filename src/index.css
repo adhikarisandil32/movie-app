@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=Roboto:wght@300&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities{
-    .flex-container{
-        padding: 16px;
-        margin: 0 auto;
-        max-width: 1100px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
-    }
+@layer utilities {
+  .flex-container {
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 1100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
 }
 
-@layer utilities{
-    .font-family-exo{
-        font-family: 'Exo 2', sans-serif;
-    }
+@layer utilities {
+  .font-family-exo {
+    font-family: "Exo 2", sans-serif;
+  }
 }
