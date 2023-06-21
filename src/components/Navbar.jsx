@@ -6,14 +6,14 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="h-20 flex justify-between items-center">
+      <div className="sm:h-20 flex flex-col sm:flex-row justify-between items-center">
           <div className="h-16">
             <Link
               to="/"
               className="h-full block"
             >
               <img
-                src="static/logo.png"
+                src="static/logo-2.png"
                 alt="logo"
                 className="p-2 h-full w-full object-contain object-center cursor-pointer"
               />

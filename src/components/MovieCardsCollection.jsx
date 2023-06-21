@@ -53,7 +53,7 @@ export default function MovieCardsCollection() {
             isLoading ? <CircularProgress size={100} /> : ''
           }
         </div>
-        <div className={`flex-container ${isLoading ? 'opacity-5' : ''}`}>
+        <div className={`border border-white flex-container ${isLoading ? 'opacity-5' : ''}`}>
           {
             matchedResults.Search.map((item, idx) => {
               return (
