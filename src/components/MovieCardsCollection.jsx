@@ -48,7 +48,10 @@ export default function MovieCardsCollection() {
   return (
     <>
       <div className="relative">
-        <div className="absolute block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div
+          className={`absolute block top-1/2 left-1/2 -translate-x-1/2 ${showPagination ? "-translate-y-1/2" : ""}`}
+          //To push CircularProgress below when cards are absent and centerize along y-axis when card are present we use condition in -translate-y. Instead of making another new flag we take advantage of pagination flag.
+        >
           {
             isLoading ? <CircularProgress size={100} /> : ''
           }
