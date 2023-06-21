@@ -12,7 +12,7 @@ export async function axiosRequest({url, dispatch, navigate, setIsLoading}){
     .then(response => {
 
       // get page number '' is none in the URL, else whatever there is
-      const pageNumber = new URL(url).searchParams.get("page") ? new URL(url).searchParams.get("page") : ''
+      const pageNumber = new URL(url).searchParams.get("page") ? new URL(url).searchParams.get("page") : 1
       const responseDataCopy = {...response.data, currentPage: pageNumber}
 
       //if Response is False i.e. no movie found, then response.data.Search need to be an empty array instead of missing entirely
