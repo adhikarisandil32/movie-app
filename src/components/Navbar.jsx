@@ -13,7 +13,7 @@ export default function Navbar() {
               className="h-full block"
             >
               <img
-                src="static/logo-2.png"
+                src="static/logo.png"
                 alt="logo"
                 className="p-2 h-full w-full object-contain object-center cursor-pointer"
               />
