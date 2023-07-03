@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import IndividualMovieCard from './IndividualMovieCard'
 import { useMovieDetailsContext } from '../store/store'
 import { axiosRequest } from "../reusables/axiosRequest";
@@ -9,10 +9,10 @@ import { CircularProgress } from '@mui/material';
 export default function MovieCardsCollection() {
   
   const [isLoading, setIsLoading] = useState(false)
-  const baseURL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&`;
+  const baseURL = `${import.meta.env.VITE_BASE_URL}&`;
   const {matchedResults, dispatch} = useMovieDetailsContext()
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
+  const [searchParams] = useSearchParams() //use two values, searchParams & setSearchParams
   const showPagination = matchedResults.Search.length === 0 ? false : true;
 
   // dummy function to check if it only changes the search parameter
@@ -60,18 +60,17 @@ export default function MovieCardsCollection() {
           {
             matchedResults.Search.map((item, idx) => {
               return (
-                <a
+                <Link
                   className="hover:cursor-pointer"
                   key={idx}
-                  href={`https://imdb.com/title/${item.imdbID}`}
-                  target="_blank"
+                  to={`/details/${item.imdbID}`}
                 > 
                   <IndividualMovieCard
                     posterLink={item.Poster}
                     title={item.Title}
                     year={item.Year}
                   />
-                </a>
+                </Link>
               )
             })
           }        

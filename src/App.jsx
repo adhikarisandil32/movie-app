@@ -4,22 +4,24 @@ import MovieCardsCollection from './components/MovieCardsCollection'
 import PageNotFound from './components/PageNotFound'
 import InternalError from './components/InternalError'
 import Navbar from './components/Navbar'
+import MovieDetails from './components/MovieDetails'
 
 export default function App() {
   return (
-      <div className="min-h-screen bg-slate-900">
-        <div className="sm:px-8">
-          <BrowserRouter>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<></>} />
-              <Route path="/*" element={<PageNotFound />} />
-              <Route path="/error" element={<InternalError />} />
-              <Route path="/home" element={<Navigate to="/" />}/>
-              <Route path="/search" element={<MovieCardsCollection />}/>
-            </Routes>
-          </BrowserRouter>
-        </div>
+    <div className="min-h-screen bg-slate-900">
+      <div className="sm:px-8">
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<></>} />
+            <Route path="/*" element={<PageNotFound />} />
+            <Route path="/error" element={<InternalError />} />
+            <Route path="/home" element={<Navigate to="/" />}/>
+            <Route path="/search" element={<MovieCardsCollection />}/>
+            <Route path="/details/:imdbID" element={<MovieDetails />}/>
+          </Routes>
+        </BrowserRouter>
       </div>
+    </div>
   )
 }
