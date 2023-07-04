@@ -14,10 +14,22 @@
     justify-content: center;
     gap: 16px;
   }
-}
 
-@layer utilities {
   .font-family-exo {
     font-family: "Exo 2", sans-serif;
   }
+
+  .img-skeleton-loading{
+    animation: skeletion-loading-animation 1s linear infinite alternate;
+  }
+
+  @keyframes skeletion-loading-animation{
+    0% {
+      background-color: rgba(27, 41, 75, 0);
+    }
+    100%{
+      background-color: rgba(27, 41, 75, 1);
+    }
+  }
 }
+
