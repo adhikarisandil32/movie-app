@@ -8,11 +8,9 @@ export default function MovieDetails() {
 
   const {imdbID} = useParams() //to get the path params of dynamic routing
   const [movieData, setMovieData] = useState({})
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     makeAxiosCall()
-    setLoading(true)
   }, [])
 
   async function makeAxiosCall(){
@@ -30,15 +28,7 @@ export default function MovieDetails() {
       <div className="w-full py-4 flex flex-col items-center justify-center gap-2">
         <div className="w-fit text-gray-400 cursor-pointer border border-white">
           {
-            loading ? <Skeleton
-              sx={{bgcolor: '#1e293b'}}
-              variant="rectangular"
-              animation="pulse"
-              width={300}
-              height={450}
-            /> : <MyImage
-              setLoading={setLoading}
-              className="w-[300px] h-[450px]"
+            <MyImage
               src={movieData.Poster}
               alt={movieData.Title}
             />

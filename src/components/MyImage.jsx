@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Image({src, className, alt, setLoading}) {
+export default function Image({src, alt}) {
 
-  function handleImageLoad(){
-    console.log("Image Fully Loaded")
+  const [loading, setLoading] = useState(true)
+
+  const handleImageLoad = () => {
     setLoading(false)
   }
 
   return (
-    <img
-      onLoad={handleImageLoad}
-      className={className}
-      src={src}
-      alt={alt}
-    />
+    <>
+      <img
+        onLoad={handleImageLoad}
+        className={`w-[300px] h-[450px] ${loading ? "img-skeleton-loading" : ''}`} //custom skeleton loading added
+        src={src}
+        alt={alt}
+      />
+    </>
   )
 }
