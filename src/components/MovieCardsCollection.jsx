@@ -60,17 +60,17 @@ export default function MovieCardsCollection() {
           {
             matchedResults.Search.map((item, idx) => {
               return (
-                <Link
+                <a
                   className="hover:cursor-pointer"
                   key={idx}
-                  to={`/details/${item.imdbID}`}
+                  href={`/details/${item.imdbID}`}
                 > 
                   <IndividualMovieCard
                     posterLink={item.Poster}
                     title={item.Title}
                     year={item.Year}
                   />
-                </Link>
+                </a> //a tag instead of link so that when user clicks it, the page reloads clearing the searchbox
               )
             })
           }        
