@@ -1,13 +1,13 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Skeleton } from '@mui/material'
 import MyImage from './MyImage'
 
 export default function MovieDetails() {
 
   const {imdbID} = useParams() //to get the path params of dynamic routing
   const [movieData, setMovieData] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
     makeAxiosCall()
@@ -16,6 +16,12 @@ export default function MovieDetails() {
   async function makeAxiosCall(){
     await axios.get(`${import.meta.env.VITE_BASE_URL}&i=${imdbID}`)
       .then(response => {
+        if(response.data.Response === "False"){
+          navigate({
+            pathname: "/page-not-found"
+          })
+          return
+        }
         setMovieData(response.data)
       })
       .catch(err => {
