@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useSearchParams, useNavigate, Link } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import IndividualMovieCard from './IndividualMovieCard'
 import { useMovieDetailsContext } from '../store/store'
 import { axiosRequest } from "../reusables/axiosRequest";
