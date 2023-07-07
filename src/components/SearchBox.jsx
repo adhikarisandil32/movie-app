@@ -103,9 +103,11 @@ export default function SearchBox() {
             setSearchString(e.target.value);
           }}
           placeholder="Enter Movie Name"
+          required
         />
         <button
           className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-600 rounded-md font-semibold"
+          type="submit"
         ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
       </form>
     </div>

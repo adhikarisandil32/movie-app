@@ -8,8 +8,8 @@ export default function Navbar() {
     <>
       <div className="sm:h-20 w-full flex flex-col sm:flex-row justify-between items-center sticky top-0 left-0 z-10 bg-slate-900">
           <div className="h-16">
-            <Link
-              to="/"
+            <a
+              href="/"
               className="h-full block"
             >
               <img
@@ -17,7 +17,7 @@ export default function Navbar() {
                 alt="logo"
                 className="p-2 h-full w-full object-contain object-center cursor-pointer"
               />
-            </Link>
+            </a>
           </div>
           <div className="w-[min(100%,400px)]">
             <SearchBox />
