@@ -14,7 +14,7 @@ export default function MovieDetails() {
   }, [])
 
   async function makeAxiosCall(){
-    await axios.get(`http://localhost:4000/?i=${imdbID}`)
+    await axios.get(`/.netlify/functions/serverRequest/?i=${imdbID}`)
       .then(response => {
         if(response.data.Response === "False"){
           navigate({
@@ -25,7 +25,7 @@ export default function MovieDetails() {
         setMovieData(response.data)
       })
       .catch(err => {
-        console.log(err.message)
+        console.error(err.message)
       })
   }
 
