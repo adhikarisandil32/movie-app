@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios from 'axios'
 
 export const handler = async (event, context) => {
 
@@ -12,7 +12,7 @@ export const handler = async (event, context) => {
     }
 
   } catch(err) {
-    console.error(err)
+    console.error(err.message)
     return {
       statusCode: 500,
       body: JSON.stringify({error: err.message})
