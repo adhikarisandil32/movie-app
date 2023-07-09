@@ -9,7 +9,6 @@ import { CircularProgress } from '@mui/material';
 export default function MovieCardsCollection() {
   
   const [isLoading, setIsLoading] = useState(false)
-  const baseURL = `${import.meta.env.VITE_BASE_URL}&`;
   const {matchedResults, dispatch} = useMovieDetailsContext()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams() //use two values, searchParams & setSearchParams
@@ -26,7 +25,7 @@ export default function MovieCardsCollection() {
 
   useEffect(() => {
     axiosRequest({
-      url: `${baseURL}${searchParams.toString()}`,
+      requestUrl: `/.netlify/functions/serverRequest/?${searchParams.toString()}`,
       dispatch: dispatch,
       navigate: navigate,
       setIsLoading: setIsLoading
