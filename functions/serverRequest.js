@@ -4,8 +4,9 @@ export const handler = async (event, context) => {
 
   try {
     const searchParams = new URLSearchParams(event.queryStringParameters).toString();
+    console.log(searchParams)
     const response = await axios.get(`${process.env.VITE_BASE_URL}${searchParams}`)
-    
+    console.log(`${process.env.VITE_BASE_URL}${searchParams}`)
     return {
       statusCode: 200,
       body: JSON.stringify(response.data)
