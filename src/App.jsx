@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Home from './components/Home'
 import MovieCardsCollection from './components/MovieCardsCollection'
 import PageNotFound from './components/PageNotFound'
 import InternalError from './components/InternalError'
@@ -13,7 +14,7 @@ export default function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<></>} />
+            <Route path="/" element={<Home />} />
             <Route path="/*" element={<PageNotFound />} />
             <Route path="/error" element={<InternalError />} />
             <Route path="/home" element={<Navigate to="/" />}/>
