@@ -14,7 +14,7 @@ export default function MovieDetails() {
   }, [])
 
   async function makeAxiosCall(){
-    await axios.get(`${import.meta.env.VITE_BASE_URL}&i=${imdbID}`)
+    await axios.get(`http://localhost:4000/?i=${imdbID}`)
       .then(response => {
         if(response.data.Response === "False"){
           navigate({

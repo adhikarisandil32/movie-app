@@ -1,18 +1,19 @@
 import React from 'react'
 import axios from 'axios'
 
-export async function axiosRequest({url, dispatch, navigate, setIsLoading}){
+export async function axiosRequest({requestUrl, dispatch, navigate, setIsLoading}){
   // const {dispatch} = 'useMovieDetailsContext()'
   // dispatch if extracted directly from useMovieDetailsContext, can cause a re-rendering loop.
   // navigate needs to be passed as props as well because axios request is already a hook which cannot request another hook
   
   setIsLoading(true)
-
-  await axios.get(url)
+  
+  await axios.get(requestUrl)
     .then(response => {
 
       // get page number '' is none in the URL, else whatever there is
-      const pageNumber = new URL(url).searchParams.get("page") ? new URL(url).searchParams.get("page") : '1'
+      const pageNumber = new URL(location.href).searchParams.get("page") ? new URL(location.href).searchParams.get("page") : '1'
+
       const responseDataCopy = {...response.data, currentPage: pageNumber}
 
       //if Response is False i.e. no movie found, then response.data.Search need to be an empty array instead of missing entirely
