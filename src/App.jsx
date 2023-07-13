@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Home from './components/Home'
-import MovieCardsCollection from './components/MovieCardsCollection'
-import PageNotFound from './components/PageNotFound'
-import InternalError from './components/InternalError'
+const LazyHome = lazy(() => import('./components/Home'))
+const LazyMovieCardsCollection = lazy(() => import('./components/MovieCardsCollection'))
+const LazyPageNotFound = lazy(() => import('./components/PageNotFound'))
+const LazyMovieDetails = lazy(() => import('./components/MovieDetails'))
 import Navbar from './components/Navbar'
-import MovieDetails from './components/MovieDetails'
+
 
 export default function App() {
   return (
@@ -14,12 +14,11 @@ export default function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/*" element={<PageNotFound />} />
-            <Route path="/error" element={<InternalError />} />
+            <Route path="/" element={<Suspense fallback={""}><LazyHome /></Suspense>} />
+            <Route path="/*" element={<Suspense fallback={""}><LazyPageNotFound /></Suspense>} />
             <Route path="/home" element={<Navigate to="/" />}/>
-            <Route path="/search" element={<MovieCardsCollection />}/>
-            <Route path="/details/:imdbID" element={<MovieDetails />}/>
+            <Route path="/search" element={<Suspense fallback={""}><LazyMovieCardsCollection /></Suspense>}/>
+            <Route path="/details/:imdbID" element={<Suspense fallback={""}><LazyMovieDetails /></Suspense>}/>
           </Routes>
         </BrowserRouter>
       </div>
