@@ -3,7 +3,6 @@ import axios from 'axios'
 export const handler = async (event, context) => {
   try {
     const searchParams = new URLSearchParams(event.queryStringParameters).toString()
-    console.log(searchParams)
     const response = await axios.request({
       method: 'get',
       url: `https://${process.env.VITE_RAPID_API_HOST}/titles?${searchParams}`,
