@@ -6,7 +6,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="sm:h-20 w-full flex flex-col sm:flex-row justify-between items-center sticky top-0 left-0 z-10 bg-slate-900">
+      <div className="sm:h-20 sm:py-0 py-4 w-full flex flex-col sm:flex-row justify-between items-center sticky top-0 left-0 z-10 bg-slate-900">
           <div className="h-16">
             <a
               href="/"

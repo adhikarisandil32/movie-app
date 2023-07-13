@@ -1,7 +1,6 @@
-import React from 'react'
 import axios from 'axios'
 
-export async function axiosRequest({requestUrl, dispatch, navigate, setIsLoading}){
+export async function axiosRequest({requestUrl, dispatch, setIsLoading, setError}){
   // const {dispatch} = 'useMovieDetailsContext()'
   // dispatch if extracted directly from useMovieDetailsContext, can cause a re-rendering loop.
   // navigate needs to be passed as props as well because axios request is already a hook which cannot request another hook
@@ -32,8 +31,7 @@ export async function axiosRequest({requestUrl, dispatch, navigate, setIsLoading
       setIsLoading(false) //sets loading state to false after dispatching data to store
     })
     .catch((err) => {
-      navigate({
-        pathname: "/error"
-      })
+      console.error(err.message)
+      setError(err)
     })
 }
