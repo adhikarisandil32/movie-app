@@ -5,10 +5,10 @@ export const handler = async (event, context) => {
     const searchParams = new URLSearchParams(event.queryStringParameters).toString()
     const response = await axios.request({
       method: 'get',
-      url: `https://${process.env.VITE_RAPID_API_HOST}/titles?${searchParams}`,
+      url: `https://${process.env.VITE_API_HOST}/titles?${searchParams}`,
       headers: {
-        'X-RapidAPI-Key': process.env.VITE_RAPID_API_KEY,
-        'X-RapidAPI-Host': process.env.VITE_RAPID_API_HOST
+        'X-RapidAPI-Key': process.env.VITE_API_KEY,
+        'X-RapidAPI-Host': process.env.VITE_API_HOST
       }
     })
 

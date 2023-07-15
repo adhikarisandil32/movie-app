@@ -96,20 +96,20 @@ export default function SearchBox() {
         className="full flex"
       >
         <input
-          className='w-full py-1 px-2 border-2 border-gray-500 rounded-md outline-none'
+          className='w-full py-1 px-2 border border-blue-600 rounded-l-md outline-none'
           type="text"
           value={searchString}
           onChange={(e) => {
             setSearchString(e.target.value);
           }}
-          placeholder="Enter Movie Name"
+          placeholder="Enter Movie/Series Title"
           required
         />
         <button
-          className="py-1 px-4 bg-blue-700 text-white border-2 border-blue-600 rounded-md font-semibold"
+          className="py-1 px-4 bg-blue-700 text-white border border-blue-600 rounded-r-md font-semibold"
           type="submit"
         ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
       </form>
     </div>
-  );
+  )
 }

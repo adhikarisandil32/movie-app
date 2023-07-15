@@ -81,7 +81,6 @@ export default function MovieCardsCollection() {
           />
         )}
       </div>
-      {error && <div>Error</div>}
     </>
   );
 }
