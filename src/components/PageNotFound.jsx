@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function PageNotFound() {
+  document.title = "404 | CineSearch"
   return (
       <div className="mt-8 h-96">
         <div className="flex justify-center">

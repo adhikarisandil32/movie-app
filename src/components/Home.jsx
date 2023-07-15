@@ -4,6 +4,9 @@ import { axiosRequestForHome } from '../reusables/axiosRequestHome'
 import { CircularProgress } from '@mui/material'
 
 export default function Home() {
+
+  document.title = "Home | CineSearch"
+
   const [queryParamOptions, setQueryParamOptions] = useState({
     sort: 'year.decr',
     page: '1',

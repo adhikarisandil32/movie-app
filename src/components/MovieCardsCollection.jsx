@@ -1,14 +1,16 @@
-import React, { useEffect, useState, lazy } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useMovieDetailsContext } from "../store/store";
 import { axiosRequest } from "../reusables/axiosRequest";
 import IndividualMovieCard from "./IndividualMovieCard";
 const LazyPagination = lazy(() => import('./Pagination'))
+const LazyInternalError = lazy(() => import('./InternalError'))
 import { CircularProgress } from "@mui/material";
 
 export default function MovieCardsCollection() {
+  document.title = "Search | CineSearch"
+
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
   const { matchedResults, dispatch } = useMovieDetailsContext();
   const [searchParams] = useSearchParams(); //use two values, searchParams & setSearchParams
   const showPagination = matchedResults.Search.length === 0 ? false : true;
@@ -27,7 +29,6 @@ export default function MovieCardsCollection() {
       requestUrl: `/.netlify/functions/serverRequest/?${searchParams.toString()}`,
       dispatch: dispatch,
       setIsLoading: setIsLoading,
-      setError: setError,
     });
   }, [searchParams]);
 
