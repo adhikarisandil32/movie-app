@@ -4,7 +4,6 @@ import { useMovieDetailsContext } from "../store/store";
 import { axiosRequest } from "../reusables/axiosRequest";
 import IndividualMovieCard from "./IndividualMovieCard";
 const LazyPagination = lazy(() => import('./Pagination'))
-const LazyInternalError = lazy(() => import('./InternalError'))
 import { CircularProgress } from "@mui/material";
 
 export default function MovieCardsCollection() {
