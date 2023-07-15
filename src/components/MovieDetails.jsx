@@ -5,6 +5,7 @@ import MyImage from './MyImage'
 const LazyPageNotFound = lazy(() => import('./PageNotFound'))
 
 export default function MovieDetails() {
+  document.title = "Details | CineSearch"
 
   const {imdbID} = useParams() //to get the path params of dynamic routing
   const [movieData, setMovieData] = useState({})
