@@ -22,7 +22,7 @@ export default function Image({src, alt}) {
     <>
       <img
         onLoad={handleImageLoad}
-        className={`w-[300px] h-[450px] ${loading ? "img-skeleton-loading" : ''}`} //custom skeleton loading added
+        className={`w-[300px] h-[450px] object-center object-cover ${loading ? "img-skeleton-loading" : ''}`} //custom skeleton loading added
         src={src}
         alt={alt}
       />
