@@ -1,5 +1,7 @@
 import React from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightLong, faLeftLong } from '@fortawesome/free-solid-svg-icons'
 
 export default function Pagination({totalPages, currentPage}) {
   const [searchParams] = useSearchParams()
@@ -45,14 +47,14 @@ export default function Pagination({totalPages, currentPage}) {
   return (
     <div className="pb-4 text-center">
       <button
-        className="px-4 py-2 bg-blue-950 rounded-lg text-gray-200"
+        className="px-4 py-2 bg-blue-950 rounded-l-full text-gray-200"
         onClick={handlePrevious}
-      >Previous</button>
+      ><FontAwesomeIcon icon={faLeftLong} /></button>
         <span className="px-4 text-gray-400">{currentPage} of {totalPages}</span>
       <button
-        className="px-4 py-2 bg-blue-950 rounded-lg text-gray-200"
+        className="px-4 py-2 bg-blue-950 rounded-r-full text-gray-200"
         onClick={handleNext}
-      >Next</button>
+      ><FontAwesomeIcon icon={faRightLong} /></button>
     </div>
   )
 }
